@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const VenueService = () => {
   const [venueList, setVenueList] = useState([]);
-  const [newVenue, setNewVenue] = useState({ location: '', capacity: '', price: '', imageUrl: '' });
+  const [newVenue, setNewVenue] = useState({ location: '', description: '', capacity: '', price: '', imageUrl: '' });
   const [editingId, setEditingId] = useState(null);
-  const [editVenue, setEditVenue] = useState({ location: '', capacity: '', price: '', imageUrl: '' });
+  const [editVenue, setEditVenue] = useState({ location: '', description: '', capacity: '', price: '', imageUrl: '' });
 
   useEffect(() => {
     fetchVenues();
@@ -25,7 +25,7 @@ const VenueService = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/venue', newVenue);
       setVenueList([...venueList, response.data]);
-      setNewVenue({ location: '', capacity: '', price: '', imageUrl: '' });
+      setNewVenue({ location: '', description: '', capacity: '', price: '', imageUrl: '' });
     } catch (error) {
       console.error('Error adding venue:', error);
     }
@@ -38,7 +38,7 @@ const VenueService = () => {
         venueList.map((venue) => (venue.id === id ? response.data : venue))
       );
       setEditingId(null);
-      setEditVenue({ location: '', capacity: '', price: '', imageUrl: '' });
+      setEditVenue({ location: '', description: '', capacity: '', price: '', imageUrl: '' });
     } catch (error) {
       console.error('Error updating venue:', error);
     }
@@ -67,6 +67,15 @@ const VenueService = () => {
             placeholder="Location"
             value={newVenue.location}
             onChange={(e) => setNewVenue({ ...newVenue, location: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Description"
+            value={newVenue.description}
+            onChange={(e) => setNewVenue({ ...newVenue, description: e.target.value })}
           />
         </div>
         <div className="form-group mb-2">
@@ -104,95 +113,107 @@ const VenueService = () => {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Image</th>
+            <th>ID</th>
             <th>Location</th>
+            <th>Description</th>
             <th>Capacity</th>
             <th>Price</th>
+            <th>Image URL</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {venueList.map((venue) => (
-            <tr key={venue.id}>
-              {editingId === venue.id ? (
-                <>
-                  <td>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={editVenue.imageUrl}
-                      onChange={(e) => setEditVenue({ ...editVenue, imageUrl: e.target.value })}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={editVenue.location}
-                      onChange={(e) => setEditVenue({ ...editVenue, location: e.target.value })}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      value={editVenue.capacity}
-                      onChange={(e) => setEditVenue({ ...editVenue, capacity: parseInt(e.target.value) })}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      value={editVenue.price}
-                      onChange={(e) => setEditVenue({ ...editVenue, price: parseFloat(e.target.value) })}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-success btn-sm me-2"
-                      onClick={() => updateVenue(venue.id)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="btn btn-secondary btn-sm"
-                      onClick={() => setEditingId(null)}
-                    >
-                      Cancel
-                    </button>
-                  </td>
-                </>
-              ) : (
-                <>
-                  <td>
-                    <img src={venue.imageUrl} alt={venue.location} style={{ width: '100px', height: 'auto' }} />
-                  </td>
-                  <td>{venue.location}</td>
-                  <td>{venue.capacity}</td>
-                  <td>${venue.price}</td>
-                  <td>
-                    <button
-                      className="btn btn-warning btn-sm me-2"
-                      onClick={() => {
-                        setEditingId(venue.id);
-                        setEditVenue(venue);
-                      }}
-                    >
-                      Update
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => deleteVenue(venue.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </>
-              )}
-            </tr>
-          ))}
-        </tbody>
+  {venueList.map((venue) => (
+    <tr key={venue.id}>
+      {editingId === venue.id ? (
+        <>
+          <td>{venue.id}</td>
+          <td>
+            <input
+              type="text"
+              className="form-control"
+              value={editVenue.location}
+              onChange={(e) => setEditVenue({ ...editVenue, location: e.target.value })}
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              className="form-control"
+              value={editVenue.description}
+              onChange={(e) => setEditVenue({ ...editVenue, description: e.target.value })}
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              className="form-control"
+              value={editVenue.capacity}
+              onChange={(e) => setEditVenue({ ...editVenue, capacity: parseInt(e.target.value) })}
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              className="form-control"
+              value={editVenue.price}
+              onChange={(e) => setEditVenue({ ...editVenue, price: parseFloat(e.target.value) })}
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              className="form-control"
+              value={editVenue.imageUrl}
+              onChange={(e) => setEditVenue({ ...editVenue, imageUrl: e.target.value })}
+            />
+          </td>
+          <td>
+            <button
+              className="btn btn-success btn-sm me-2"
+              onClick={() => updateVenue(venue.id)}
+            >
+              Save
+            </button>
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={() => setEditingId(null)}
+            >
+              Cancel
+            </button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td>{venue.id}</td>
+          <td>{venue.location}</td>
+          <td>{venue.description}</td>
+          <td>{venue.capacity}</td>
+          <td>${venue.price}</td>
+          <td>{venue.imageUrl}</td>
+          <td>
+            <button
+              className="btn btn-warning btn-sm me-2"
+              onClick={() => {
+                setEditingId(venue.id);
+                setEditVenue({ ...venue }); // Copy venue data for editing
+              }}
+            >
+              Update
+            </button>
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => deleteVenue(venue.id)}
+            >
+              Delete
+            </button>
+          </td>
+        </>
+      )}
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );

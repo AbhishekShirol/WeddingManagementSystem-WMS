@@ -1,43 +1,49 @@
 require('dotenv').config();
 const express = require('express');
-const { connectDB, sequelize } = require('./config/db.js');
+const { db,connectDB} = require('./config/db.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const passport = require('passport');
-require('./config/passport')(passport); // Import Passport configuration
 
+
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+
 
 
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true // Allow credentials if needed
+}));
 
-// app.use(cors({
-//   origin: 'http://localhost:3000', // Allow requests from this origin
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-//   credentials: true // Allow credentials if needed
-// }));
+
+app.use(cookieParser());
+
 
 app.use(bodyParser.json());
-app.use(
-  session({
-    secret: 'your_secret_key', // Change this to a secure random key
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(
+//   session({
+//     secret: 'your_secret_key', // Change this to a secure random key
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie:{
+//       secure:false,
+//       maxAge:1000 * 60 * 60 * 24
+//     }
+//   })
+// );
+
 
 connectDB();
 
-// Sync all models
-sequelize.sync({ force: false }).then(() => {
-  console.log('Database synchronized');
-});
+
 
 app.use('/api/user', require('./routes/user.js'));
 app.use('/api/catering', require('./routes/catering.js'));
