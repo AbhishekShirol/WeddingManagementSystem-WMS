@@ -592,9 +592,4 @@ const ServiceBooking = () => {
   );
 };
 
-
 export default ServiceBooking;
-
-
-
-

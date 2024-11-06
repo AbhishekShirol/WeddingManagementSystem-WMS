@@ -59,8 +59,6 @@
 // module.exports = router;
 
 
-
-
 const express = require('express');
 const router = express.Router();
 const { db, connectDB } = require('../config/db.js'); // Import your database connection
@@ -135,5 +133,36 @@ router.delete('/:id', (req, res) => {
         return res.status(204).send();
     });
 });
+
+
+
+// Book a catering service for a registration (using stored procedure)
+router.post('/book', (req, res) => {
+    const { registrationId, serviceType, serviceId } = req.body; // Include registrationId, serviceType, and serviceId
+
+    // Define the query to call the stored procedure
+    const query = 'CALL book_service(?, ?, ?)';
+    const values = [registrationId, serviceType, serviceId];
+
+    // Execute the query
+    db.query(query, values, (err, results) => {
+        if (err) {
+            console.error(err); // Log the error for debugging
+            return res.status(400).json({ error: err.message }); // Respond with error message
+        }
+
+        // Check if the stored procedure executed successfully
+        if (results && results.length > 0 && results[0].affectedRows !== undefined) {
+            if (results[0].affectedRows === 0) {
+                return res.status(404).json({ message: 'Registration not found or service already booked' });
+            }
+        }
+
+        // Confirm successful booking
+        return res.status(200).json({ message: `Catering service booked successfully` });
+    });
+});
+
+
 
 module.exports = router;

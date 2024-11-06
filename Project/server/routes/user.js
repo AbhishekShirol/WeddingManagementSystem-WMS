@@ -5,15 +5,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 
-// router.get('/',(req,res)=>{
-//   if(req.session.username){
-//     return res.json({valid:true, username:req.session.username})
-//   }else{
-//     return res.json({valid:false})
-//   }
-// })
-
-
 const authenticateToken = (req, res, next) => {
   // Get the token from the headers or cookies (depending on how you're sending it)
   const token = req.cookies.access_token || req.headers['authorization']?.split(' ')[1]; // Check for token in cookies or Authorization header
@@ -38,7 +29,6 @@ router.get('/user', authenticateToken, (req, res) => {
 });
 
 
-
 // Register a new user
 
 router.post('/userregister', async (req, res) => {
@@ -53,7 +43,7 @@ router.post('/userregister', async (req, res) => {
         return res.status(409).json({message: "User already exists!"});
       }
       
-      //Hash the password 
+      //Hash the password
       
       const salt =  bcrypt.genSaltSync(10);
       const hashedPassword =  bcrypt.hashSync(req.body.password, salt);
@@ -88,8 +78,8 @@ router.post('/userregister', async (req, res) => {
 
 
 
-
 // Login a user
+
 router.post('/userlogin', (req, res) => {
   //Check if user exists
   
@@ -104,7 +94,6 @@ router.post('/userlogin', (req, res) => {
     const isPasswordCorrect = bcrypt.compareSync(req.body.password, result[0].password);
     // const isPasswordCorrect = req.body.password === result[0].password;
 
-
     if (!isPasswordCorrect) return res.status(401).json({message:"Invalid password"});
     // req.session.username = result[0].username;
 
@@ -115,10 +104,8 @@ router.post('/userlogin', (req, res) => {
       {httpOnly:true}).status(200).json(other);
   })
 });
-  
 
 // Logout a user
-
 router.post('/userlogout', (req, res) => {
   res.clearCookie("access_token",{
     sameSite:'None',
