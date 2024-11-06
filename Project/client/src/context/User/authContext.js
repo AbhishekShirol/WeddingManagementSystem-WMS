@@ -25,6 +25,7 @@ export const AuthContextProvider = ({children}) => {
         setLoading(false);
     },[currentUser])
     
+    
     const [loading, setLoading] = useState(true);
 
     if (loading) {

@@ -43,8 +43,8 @@ function UserNavbar() {
 
             <Nav.Link as={Link} to="/user">Home</Nav.Link>
             <Nav.Link as={Link} to="/user/services">Services</Nav.Link>
-            <Nav.Link as={Link} to="/user/venues">Venue</Nav.Link>
-            <Nav.Link as={Link} to="/user/bookings">Bookings</Nav.Link>
+            <Nav.Link as={Link} to="/user/weddingregister">Wedding Register</Nav.Link>
+            <Nav.Link as={Link} to="/user/servicesbooking">Bookings</Nav.Link>
             {currentUser ?
             (<Nav.Link onClick={onLogout} >User Logout</Nav.Link>)
             :

@@ -28,6 +28,11 @@ import UserDecoration from './pages/User/Services/UserDecoration'
 import UserMusic from './pages/User/Services/UserMusic';
 import UserVenue from './pages/User/venues';
 
+//User Booking and registration
+
+import WeddingRegister from './pages/User/WeddingRegister';
+import ServiesBooking from './pages/User/ServiceBooking'
+
 //User login
 import Userlogin from './pages/User/Auth/UserLogin'
 import UserRegister from './pages/User/Auth/userRegister';
@@ -68,34 +73,33 @@ function App() {
             
             <Route path="/user/services" element={<div><UserNavbar /><UserServices /></div>} />
             
-            <Route path="/user/catering" element={<div><UserNavbar /><UserCatering /></div>} />
+            <Route path="/user/catering/:registrationId" element={<div><UserNavbar /><UserCatering /></div>} />
             
-            <Route path="/user/decoration" element={<div><UserNavbar /><UserDecoration /></div>} />
+            <Route path="/user/decoration/:registrationId" element={<div><UserNavbar /><UserDecoration /></div>} />
             
-            <Route path="/user/music" element={<div><UserNavbar /><UserMusic /></div>} />
+            <Route path="/user/music/:registrationId" element={<div><UserNavbar /><UserMusic /></div>} />
             
-            <Route path="/user/venues" element={<div><UserNavbar /><UserVenue /></div>} />
+            <Route path="/user/venues/:registrationId" element={<div><UserNavbar /><UserVenue /></div>} />
+
+            <Route path='/user/weddingregister' element={<div><WeddingRegister /></div>} />
+
+            <Route path= '/user/servicesbooking' element={<div><UserNavbar /><ServiesBooking/></div>}/>
           </Route>
 
 
 
 {/* Admin login */}
 
-
           {/* <Route path="/adminlogin" element={<Adminlogin/>} /> */}
           {/* <Route path="/adminregister" element={<Adminlogin />} /> */}
 
-
-
 {/* Adminservices */}
-
           
           <Route path="/admin/services" element=<div><AdminNavbar/> <AdminServices/> </div> />
           <Route path="/admin/catering" element=<div><AdminNavbar/> <Catering/> </div> />
           <Route path="/admin/music" element=<div><AdminNavbar/> <Music/> </div> />
           <Route path="/admin/decoration" element=<div><AdminNavbar/> <Decoration/> </div> />
           <Route path="/admin/venue" element=<div><AdminNavbar/> <AdminVenue/> </div> />
-
 
         </Routes>
       </Router>

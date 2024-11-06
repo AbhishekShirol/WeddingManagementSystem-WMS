@@ -45,6 +45,18 @@ function Services() {
             </Link>
           </div>
 
+          {/* Venue Service Card */}
+          <div className="col-md-4 mb-4 d-flex justify-content-center">
+            <Link to="/admin/venue" className="text-decoration-none text-dark">
+              <div className="card" style={{ width: '300px', height: '400px', position: 'relative', overflow: 'hidden' }}>
+                <img src="/img1.jpg" className="card-img-top" alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
+                <div className="card-body text-center" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(255, 255, 255, 0.7)', padding: '10px' }}>
+                  <h5 className="card-title">Venue</h5>
+                </div>
+              </div>
+            </Link>
+          </div>
+
         </div>
       </div>
     </div>
