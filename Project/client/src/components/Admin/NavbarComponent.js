@@ -18,7 +18,7 @@ function NavbarComponent() {
 
             <Nav.Link as={Link} to="/admin/">Home</Nav.Link>
             <Nav.Link as={Link} to="/admin/services">Services</Nav.Link>
-            <Nav.Link as={Link} to="/admin/venue">Venue</Nav.Link>
+            <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/">Admin Logout</Nav.Link>
             
           </Nav>

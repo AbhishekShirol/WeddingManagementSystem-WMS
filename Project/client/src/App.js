@@ -40,10 +40,13 @@ import UserRegister from './pages/User/Auth/userRegister';
 
 //ADMIN
 import AdminVenue from './pages/Admin/services/Venue'
+import Bookings from './pages/Admin/Booking'
 
 
 // Home
 import Services from './pages/Home/Services';
+import DetailedServices from './pages/Admin/DetailedServices';
+
 
 
 function App() {
@@ -100,6 +103,8 @@ function App() {
           <Route path="/admin/music" element=<div><AdminNavbar/> <Music/> </div> />
           <Route path="/admin/decoration" element=<div><AdminNavbar/> <Decoration/> </div> />
           <Route path="/admin/venue" element=<div><AdminNavbar/> <AdminVenue/> </div> />
+          <Route path='/admin/bookings' element=<div><AdminNavbar/><Bookings/></div> />
+          <Route path='/admin/bookings/servicesdesc/:registrationId' element=<div><AdminNavbar/><DetailedServices/></div> />
 
         </Routes>
       </Router>

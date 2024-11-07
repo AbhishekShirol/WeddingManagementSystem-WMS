@@ -52,6 +52,7 @@ app.use('/api/music', require('./routes/music.js'));
 app.use('/api/decoration', require('./routes/decoration.js'));
 app.use('/api/wedding/register' ,require('./routes/weddingregister.js'))
 app.use('/api/', require('./routes/canceling_services.js'));
+app.use('/api/admin/bookings/servicesdesc', require('./routes/DetailedServices.js'));
 // app.use('/api/services/', require('./routes/bookingServices.js'));
 
 const PORT = process.env.PORT || 5000;

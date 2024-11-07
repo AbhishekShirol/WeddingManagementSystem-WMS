@@ -52,30 +52,66 @@ const router = express.Router();
 const { db } = require('../config/db.js'); // Import your database connection
 
 
+// // Fetch all wedding registrations
+// router.get('/', async (req, res) => {
+
+//   try {
+//     const user_id = req.query.user_id;  // Access user_id from query params
+    
+//     // console.log("user id from the backend jkjalkfalkf",user_id);
+  
+//     if (!user_id) {
+//       return res.status(400).json({ message: "user_id is required" });
+//     }
+
+//     const query = 'SELECT * FROM registrations WHERE user_id = ?';
+//     db.query(query,[user_id],(err, results) => {
+//       if (err) {
+//         return res.status(500).json({ message: "Server error during fetching registrations" });
+//       }
+//       res.json(results);
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+
+
+
+
 // Fetch all wedding registrations
 router.get('/', async (req, res) => {
-
   try {
     const user_id = req.query.user_id;  // Access user_id from query params
-    
-    // console.log("user id from the backend jkjalkfalkf",user_id);
-  
-    if (!user_id) {
-      return res.status(400).json({ message: "user_id is required" });
+
+    // If no user_id is provided, fetch all registrations (for admin)
+    let query = 'SELECT * FROM registrations';
+    let queryParams = [];
+
+    // If a user_id is provided, filter by user_id
+    if (user_id) {
+      query += ' WHERE user_id = ?';
+      queryParams = [user_id];
     }
 
-    const query = 'SELECT * FROM registrations WHERE user_id = ?';
-    db.query(query,[user_id],(err, results) => {
+    // Execute the query with appropriate params
+    db.query(query, queryParams, (err, results) => {
       if (err) {
         return res.status(500).json({ message: "Server error during fetching registrations" });
       }
       res.json(results);
     });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
   }
 });
+
+
+
+
 
 // Wedding registration route
 router.post('/', async (req, res) => {
@@ -117,5 +153,45 @@ router.post('/', async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+
+
+
+router.get('/withTotalPrice', async (req, res) => {
+  const query = `
+    SELECT 
+    r.reg_id,
+    r.user_id,
+    r.groom_name,
+    r.bride_name,
+    r.wedding_date,
+    r.number_of_guests,
+    COALESCE((
+      SELECT SUM(service_price) 
+      FROM (
+        SELECT COALESCE(v.price, 0) AS service_price FROM venues v WHERE v.id = r.venue_id
+        UNION ALL
+        SELECT COALESCE(m.price, 0) FROM music m WHERE m.id = r.music_id
+        UNION ALL
+        SELECT COALESCE(c.price, 0) FROM caterings c WHERE c.id = r.catering_id
+        UNION ALL
+        SELECT COALESCE(d.price, 0) FROM decorations d WHERE d.id = r.decoration_id
+      ) AS service_prices
+    ), 0) AS total_price
+    FROM registrations r;
+  `;
+
+  try {
+    db.query(query, (err, results) => {
+      if (err) {
+        return res.status(500).json({ message: "Error fetching registrations with total price", error: err });
+      }
+      res.json(results);
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 module.exports = router;
