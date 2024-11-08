@@ -54,53 +54,18 @@ const DecorationService = () => {
   };
 
   return (
+    <div
+      className="d-flex justify-content-center mt-5"
+      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Decoration Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Decoration Services</h1>
 
-      {/* Add New Decoration Service */}
-      <div className="card p-3 mb-4">
-        <h2>Add New Decoration Service</h2>
-        <div className="form-group mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            value={newDecoration.name}
-            onChange={(e) => setNewDecoration({ ...newDecoration, name: e.target.value })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Price"
-            value={newDecoration.price}
-            onChange={(e) => setNewDecoration({ ...newDecoration, price: parseFloat(e.target.value) })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={newDecoration.description}
-            onChange={(e) => setNewDecoration({ ...newDecoration, description: e.target.value })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Image URL"
-            value={newDecoration.imageUrl}
-            onChange={(e) => setNewDecoration({ ...newDecoration, imageUrl: e.target.value })}
-          />
-        </div>
-        <button className="btn btn-primary" onClick={addDecorationService}>Add Decoration</button>
-      </div>
+      
 
       {/* Decoration Services List */}
       <h2>Decoration List</h2>
-      <table className="table table-striped">
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -192,6 +157,47 @@ const DecorationService = () => {
           ))}
         </tbody>
       </table>
+      {/* Add New Decoration Service */}
+      <div className="card p-3 mb-4">
+        <h2>Add New Decoration Service</h2>
+        <div className="form-group mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            value={newDecoration.name}
+            onChange={(e) => setNewDecoration({ ...newDecoration, name: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Price"
+            value={newDecoration.price}
+            onChange={(e) => setNewDecoration({ ...newDecoration, price: parseFloat(e.target.value) })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <textarea
+            className="form-control"
+            placeholder="Description"
+            value={newDecoration.description}
+            onChange={(e) => setNewDecoration({ ...newDecoration, description: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Image URL"
+            value={newDecoration.imageUrl}
+            onChange={(e) => setNewDecoration({ ...newDecoration, imageUrl: e.target.value })}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={addDecorationService}>Add Decoration</button>
+      </div>
+    </div>
     </div>
   );
 };

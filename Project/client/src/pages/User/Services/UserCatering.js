@@ -69,11 +69,14 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';  // Import useParams for extracting registrationId from URL
+import { useNavigate, useParams } from 'react-router-dom';  // Import useParams for extracting registrationId from URL
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserCatering = () => {
+  const navigate = useNavigate();
+
+
   const { registrationId } = useParams();  // Extract registrationId from the URL
   const [cateringList, setCateringList] = useState([]);  // Stores the list of catering services
   const [cateringId, setCateringId] = useState('');  // Stores the selected cateringId
@@ -110,6 +113,7 @@ const UserCatering = () => {
         serviceId: cateringId    // Include the catering ID
       });
       alert(response.data.message); // Show success message
+      navigate('/user/servicesbooking')
     } catch (error) {
       console.error('Error booking catering service:', error);
       alert('Booking failed'); // Show error message
@@ -117,12 +121,16 @@ const UserCatering = () => {
   };
 
   return (
+    <div 
+      className="d-flex justify-content-center mt-5 min-vh-100 " 
+      style={{ backgroundColor: '#ADD8E6', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Catering Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Catering Services</h1>
 
       {/* Catering Services List */}
-      <h2>Available Catering Services</h2>
-      <table className="table table-striped">
+
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -167,6 +175,7 @@ const UserCatering = () => {
           Selected Catering ID: {cateringId}
         </div>
       )}
+    </div>
     </div>
   );
 };

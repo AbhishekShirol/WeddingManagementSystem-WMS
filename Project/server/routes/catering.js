@@ -160,6 +160,7 @@ router.post('/book', (req, res) => {
 
         // Confirm successful booking
         return res.status(200).json({ message: `Catering service booked successfully` });
+        
     });
 });
 

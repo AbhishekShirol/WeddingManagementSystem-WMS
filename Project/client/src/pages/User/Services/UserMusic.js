@@ -86,11 +86,14 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';  // Import useParams
+import { useParams, useNavigate } from 'react-router-dom';  // Import useParams
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserMusic = () => {
+
+  const navigate = useNavigate();  // Initialize navigate for redirection
+
   const { registrationId } = useParams();  // Extract registrationId from the URL
   const [musicList, setMusicList] = useState([]);  // Stores the list of music services
   const [musicId, setMusicId] = useState('');  // Stores the selected musicId
@@ -127,6 +130,7 @@ const UserMusic = () => {
         serviceId: musicId      // Include the music ID
       });
       alert(response.data.message); // Show success message
+      navigate('/user/servicesbooking')
     } catch (error) {
       console.error('Error booking service:', error);
       alert('Booking failed'); // Show error message
@@ -134,12 +138,16 @@ const UserMusic = () => {
   };
 
   return (
+    <div 
+      className="d-flex justify-content-center mt-5 min-vh-100 " 
+      style={{ backgroundColor: '#ADD8E6', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Music Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Music Services</h1>
 
       {/* Music Services List */}
-      <h2>Available Music Services</h2>
-      <table className="table table-striped">
+
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -184,6 +192,7 @@ const UserMusic = () => {
           Selected Music ID: {musicId}
         </div>
       )}
+    </div>
     </div>
   );
 };

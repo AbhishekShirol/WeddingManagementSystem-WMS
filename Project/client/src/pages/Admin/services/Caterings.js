@@ -53,47 +53,18 @@ const CateringService = () => {
     }
   };
 
-  console.log(cateringList);
+  // console.log(cateringList);
 
   return (
+    <div
+      className="d-flex justify-content-center mt-5"
+      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Catering Services</h1>
-
-      {/* Add New Catering Service */}
-      <div className="card p-3 mb-4">
-        <h2>Add New Catering Service</h2>
-        <div className="form-group mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            value={newCatering.name}
-            onChange={(e) => setNewCatering({ ...newCatering, name: e.target.value })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Price"
-            value={newCatering.price}
-            onChange={(e) => setNewCatering({ ...newCatering, price: parseFloat(e.target.value) })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={newCatering.description}
-            onChange={(e) => setNewCatering({ ...newCatering, description: e.target.value })}
-          />
-        </div>
-        <button className="btn btn-primary" onClick={addCateringService}>Add Catering</button>
-      </div>
-
+      <h1 className="my-4 justify-content-center d-flex">Catering Services</h1>
       {/* Catering Services List */}
       <h2>Catering List</h2>
-      <table className="table table-striped">
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -173,6 +144,41 @@ const CateringService = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Add New Catering Service */}
+      {/* <h1 className="my-4">Add Catering Services</h1> */}
+
+      <div className="card p-3 mb-4">
+        <h2>Add New Catering Service</h2>
+        <div className="form-group mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            value={newCatering.name}
+            onChange={(e) => setNewCatering({ ...newCatering, name: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Price"
+            value={newCatering.price}
+            onChange={(e) => setNewCatering({ ...newCatering, price: parseFloat(e.target.value) })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <textarea
+            className="form-control"
+            placeholder="Description"
+            value={newCatering.description}
+            onChange={(e) => setNewCatering({ ...newCatering, description: e.target.value })}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={addCateringService}>Add Catering</button>
+      </div>
+    </div>
     </div>
   );
 };

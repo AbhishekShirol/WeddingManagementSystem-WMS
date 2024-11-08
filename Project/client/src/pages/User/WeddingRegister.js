@@ -36,7 +36,11 @@ function WeddingRegister() {
   };
 
   return (
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+    <div className='d-flex justify-content-center align-items-center vh-100'
+    style={{
+      backgroundColor: '#ADD8E6' // Light Blue Color (Hex code)
+    }}
+    >
       <div className='bg-white p-3 rounded w-25'>
         <h3 className='text-center'>Wedding Registration</h3>
         <form onSubmit={handleSubmit}>
@@ -48,7 +52,7 @@ function WeddingRegister() {
               placeholder="Enter Groom's Name"
               name='groom_name'
               onChange={handleInput}
-              className='form-control rounded-0'
+              className='form-control'
             />
           </div>
           <div className='mb-3'>
@@ -59,7 +63,7 @@ function WeddingRegister() {
               placeholder="Enter Bride's Name"
               name='bride_name'
               onChange={handleInput}
-              className='form-control rounded-0'
+              className='form-control'
             />
           </div>
           <div className='mb-3'>
@@ -69,7 +73,7 @@ function WeddingRegister() {
               required
               name='wedding_date'
               onChange={handleInput}
-              className='form-control rounded-0'
+              className='form-control'
             />
           </div>
           <div className='mb-3'>
@@ -80,11 +84,11 @@ function WeddingRegister() {
               placeholder='Enter Number of Guests'
               name='number_of_guests'
               onChange={handleInput}
-              className='form-control rounded-0'
+              className='form-control'
             />
           </div>
 
-          <button className='btn btn-success w-100 rounded-0'><strong>Register Wedding</strong></button>
+          <button className='btn btn-primary w-100'><strong>Register Wedding</strong></button>
 
           {err && (
             <div className="mt-2">

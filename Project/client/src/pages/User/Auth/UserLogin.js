@@ -20,14 +20,12 @@ function UserLogin() {
     }, [currentUser, navigate]); // Depend on currentUser
 
 
-
     const [values, setValues] = useState({
         email: '',
         password: ''
     });
 
     const [err, setErr] = useState(null);
-
 
     // console.log(currentUser);
 
@@ -50,44 +48,28 @@ function UserLogin() {
 
     };
 
-    // Optional: You can add useEffect to check if user is already logged in
-    // useEffect(() => {
-    //     const checkUser = async () => {
-    //         try {
-    //             const res = await axios.get('http://localhost:5000/api/user');
-    //             if (res.data.valid) {
-    //                 navigate('/user');
-    //             } else {
-    //                 navigate('/userlogin', { replace: true });
-    //             }
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-    //     checkUser();
-    // }, [navigate]);
-
-
   return (
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+    <div className='d-flex justify-content-center align-items-center vh-100'
+    style={{
+        backgroundColor: '#ADD8E6' // Light Blue Color (Hex code)
+      }}
+      >
         <div className='bg-white p-3 rounded w-25'>
             <h3 className='text-center'>User Login</h3>
             <form onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor='email'><strong>Email</strong></label>
                     <input type='email' required placeholder='Enter Your Email ID' name='email'
-                    onChange={handleInput} className='form-control rounded-0'/>
+                    onChange={handleInput} className='form-control'/>
                 </div>
                 <div className='mb-3'>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type='password' required placeholder='Enter Your Password' name='password'
-                    onChange={handleInput} className='form-control rounded-0'/>
+                    onChange={handleInput} className='form-control'/>
                 </div>
 
-                <button type='submit' className='btn btn-success w-100 rounded-0'><strong>Login</strong></button>
-
-                <p>You agree our terms and conditions</p>
-
+                <button type='submit' className='btn btn-primary w-100 mb-2'><strong>Login</strong></button>
+    
                 {err && (
                 <div className="mt-2">
                 <p className="text-danger mb-0 text-center">
@@ -96,7 +78,11 @@ function UserLogin() {
                 </div>
                 )}
 
-                <Link to='/userregister' className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Register</Link>
+                {/* <Link to='/userregister' className='btn btn-default border w-100 bg-light text-decoration-none'>Register</Link> */}
+                <div className="text-center">
+                    <span>Don't have an account? </span>
+                    <Link to='/userregister' className='text-primary text-decoration-none'>Register now</Link>
+                </div>
             </form>
         </div>
     </div>

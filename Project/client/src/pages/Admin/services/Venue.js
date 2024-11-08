@@ -833,79 +833,18 @@ const VenueService = () => {
   // console.log(venueList);
 
   return (
+    <div
+      className="d-flex justify-content-center mt-5"
+      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Venue Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Venue Services</h1>
 
-      {/* Add New Venue Service */}
-      <div className="card p-3 mb-4">
-        <h2>Add New Venue Service</h2>
-        <div className="mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Location"
-            value={newVenue.location}
-            onChange={(e) => setNewVenue({ ...newVenue, location: e.target.value })}
-          />
-        </div>
-        <div className="mb-2">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={newVenue.description}
-            onChange={(e) => setNewVenue({ ...newVenue, description: e.target.value })}
-          />
-        </div>
-        <div className="mb-2">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Capacity"
-            value={newVenue.capacity}
-            onChange={(e) => setNewVenue({ ...newVenue, capacity: parseInt(e.target.value) })}
-          />
-        </div>
-        <div className="mb-2">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Price"
-            value={newVenue.price}
-            onChange={(e) => setNewVenue({ ...newVenue, price: parseFloat(e.target.value) })}
-          />
-        </div>
-        <div className="mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Image URL"
-            value={newVenue.imageUrl}
-            onChange={(e) => setNewVenue({ ...newVenue, imageUrl: e.target.value })}
-          />
-        </div>
-        <div className="mb-2">
-          <select
-            className="form-control"
-            value={newVenue.availability}
-            onChange={(e) => setNewVenue({ ...newVenue, availability: e.target.value })}
-          >
-            <option value="Available">Available</option>
-            <option value="Unavailable">Unavailable</option>
-          </select>
-        </div>
-        <button className="btn btn-primary" onClick={addVenueService}>Add Venue Service</button>
-      </div>
-
+    
       {/* Venue Services List */}
       <h2>Venue Services List</h2>
-      <table className="table table-striped">
-        <thead>
-
-
-
-
-
-          
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
+        <thead>          
           <tr>
             <th>Location</th>
             <th>Description</th>
@@ -1008,6 +947,66 @@ const VenueService = () => {
           ))}
         </tbody>
       </table>
+      {/* Add New Venue Service */}
+      <div className="card p-3 mb-4">
+        <h2>Add New Venue Service</h2>
+        <div className="mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Location"
+            value={newVenue.location}
+            onChange={(e) => setNewVenue({ ...newVenue, location: e.target.value })}
+          />
+        </div>
+        <div className="mb-2">
+          <textarea
+            className="form-control"
+            placeholder="Description"
+            value={newVenue.description}
+            onChange={(e) => setNewVenue({ ...newVenue, description: e.target.value })}
+          />
+        </div>
+        <div className="mb-2">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Capacity"
+            value={newVenue.capacity}
+            onChange={(e) => setNewVenue({ ...newVenue, capacity: parseInt(e.target.value) })}
+          />
+        </div>
+        <div className="mb-2">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Price"
+            value={newVenue.price}
+            onChange={(e) => setNewVenue({ ...newVenue, price: parseFloat(e.target.value) })}
+          />
+        </div>
+        <div className="mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Image URL"
+            value={newVenue.imageUrl}
+            onChange={(e) => setNewVenue({ ...newVenue, imageUrl: e.target.value })}
+          />
+        </div>
+        <div className="mb-2">
+          <select
+            className="form-control"
+            value={newVenue.availability}
+            onChange={(e) => setNewVenue({ ...newVenue, availability: e.target.value })}
+          >
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+          </select>
+        </div>
+        <button className="btn btn-primary" onClick={addVenueService}>Add Venue Service</button>
+      </div>
+    </div>
     </div>
   );
 };

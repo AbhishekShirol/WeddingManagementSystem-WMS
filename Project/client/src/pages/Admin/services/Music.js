@@ -54,44 +54,17 @@ const MusicService = () => {
   };
 
   return (
+    <div
+      className="d-flex justify-content-center mt-5"
+      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Music Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Music Services</h1>
 
-      {/* Add New Music Service */}
-      <div className="card p-3 mb-4">
-        <h2>Add New Music Service</h2>
-        <div className="form-group mb-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            value={newMusic.name}
-            onChange={(e) => setNewMusic({ ...newMusic, name: e.target.value })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Price"
-            value={newMusic.price}
-            onChange={(e) => setNewMusic({ ...newMusic, price: parseFloat(e.target.value) })}
-          />
-        </div>
-        <div className="form-group mb-2">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={newMusic.description}
-            onChange={(e) => setNewMusic({ ...newMusic, description: e.target.value })}
-          />
-        </div>
-        <button className="btn btn-primary" onClick={addMusicService}>Add Music Service</button>
-      </div>
-
+      
       {/* Music Services List */}
       <h2>Music Services List</h2>
-      <table className="table table-striped">
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -171,6 +144,39 @@ const MusicService = () => {
           ))}
         </tbody>
       </table>
+      {/* Add New Music Service */}
+      <div className="card p-3 mb-4">
+        <h2>Add New Music Service</h2>
+        <div className="form-group mb-2">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            value={newMusic.name}
+            onChange={(e) => setNewMusic({ ...newMusic, name: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Price"
+            value={newMusic.price}
+            onChange={(e) => setNewMusic({ ...newMusic, price: parseFloat(e.target.value) })}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <textarea
+            className="form-control"
+            placeholder="Description"
+            value={newMusic.description}
+            onChange={(e) => setNewMusic({ ...newMusic, description: e.target.value })}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={addMusicService}>Add Music Service</button>
+      </div>
+
+    </div>
     </div>
   );
 };

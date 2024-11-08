@@ -84,7 +84,7 @@ function App() {
             
             <Route path="/user/venues/:registrationId" element={<div><UserNavbar /><UserVenue /></div>} />
 
-            <Route path='/user/weddingregister' element={<div><WeddingRegister /></div>} />
+            <Route path='/user/weddingregister' element={<div><UserNavbar /><WeddingRegister /></div>} />
 
             <Route path= '/user/servicesbooking' element={<div><UserNavbar /><ServiesBooking/></div>}/>
           </Route>

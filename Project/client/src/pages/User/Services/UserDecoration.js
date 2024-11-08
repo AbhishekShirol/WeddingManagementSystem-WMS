@@ -69,11 +69,14 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';  // Import useParams
+import { useParams,useNavigate } from 'react-router-dom';  // Import useParams
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserDecoration = () => {
+
+  const navigate = useNavigate();
+
   const { registrationId } = useParams();  // Extract registrationId from the URL
   const [decorationList, setDecorationList] = useState([]);  // Stores the list of decoration services
   const [decorationId, setDecorationId] = useState('');  // Stores the selected decorationId
@@ -110,6 +113,7 @@ const UserDecoration = () => {
         serviceId: decorationId  // Include the decoration ID
       });
       alert(response.data.message); // Show success message
+      navigate('/user/servicesbooking')
     } catch (error) {
       console.error('Error booking service:', error);
       alert('Booking failed'); // Show error message
@@ -117,12 +121,16 @@ const UserDecoration = () => {
   };
 
   return (
+    <div 
+      className="d-flex justify-content-center mt-5 min-vh-100 " 
+      style={{ backgroundColor: '#ADD8E6', overflowY: 'auto' }}
+    >
     <div className="container">
-      <h1 className="my-4">Decoration Services</h1>
+      <h1 className="my-4 d-flex justify-content-center">Decoration Services</h1>
 
       {/* Decoration Services List */}
-      <h2>Available Decoration Services</h2>
-      <table className="table table-striped">
+
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -175,6 +183,7 @@ const UserDecoration = () => {
           Selected Decoration ID: {decorationId}
         </div>
       )}
+    </div>
     </div>
   );
 };

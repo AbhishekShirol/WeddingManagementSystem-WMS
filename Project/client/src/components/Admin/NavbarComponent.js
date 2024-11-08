@@ -9,17 +9,26 @@ import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary fixed-top">
+    <Navbar expand="lg" className="bg-light shadow-sm fixed-top py-2">
       <Container>
-        <Navbar.Brand as={Link} to="/">Wedding Managment</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            width="40" // Adjust size as needed
+            height="40" // Adjust size as needed
+            className="d-inline-block align-top me-2" // Optional: spacing to the right of image
+          />
+          <strong>Wedding Management</strong>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
 
-            <Nav.Link as={Link} to="/admin/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/admin/services">Services</Nav.Link>
-            <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
-            <Nav.Link as={Link} to="/">Admin Logout</Nav.Link>
+            <Nav.Link as={Link} to="/admin/"><strong>Home</strong></Nav.Link>
+            <Nav.Link as={Link} to="/admin/services"><strong>Services</strong></Nav.Link>
+            <Nav.Link as={Link} to="/admin/bookings"><strong>Bookings</strong></Nav.Link>
+            <Nav.Link as={Link} to="/" className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center'><strong>Admin Logout</strong></Nav.Link>
             
           </Nav>
         </Navbar.Collapse>
