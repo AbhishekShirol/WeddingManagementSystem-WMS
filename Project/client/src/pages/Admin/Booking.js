@@ -34,9 +34,13 @@ const RegistrationList = () => {
   };
 
   return (
+    <div
+      className="d-flex justify-content-center mt-5"
+      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+    >
     <div className="container pt-5">
       <h1>Registered Weddings</h1>
-      <table className="table table-striped">
+      <table className="table table-striped" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <thead>
           <tr>
             <th>Registration ID</th>
@@ -77,6 +81,7 @@ const RegistrationList = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

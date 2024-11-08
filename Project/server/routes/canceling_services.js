@@ -95,7 +95,7 @@ router.post('/cancel-registration', (req, res) => {
                         res.status(500).json({ success: false, message: 'Error deleting from bookings_log' });
                     });
                 }
-                console.log('Bookings log entries deleted successfully');
+                // console.log('Bookings log entries deleted successfully');
                 deleteRegistration();
             });
         }
