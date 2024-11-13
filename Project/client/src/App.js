@@ -1,21 +1,23 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
+// Home
 import Home from './pages/Home/Home';
-import AdminServices from './pages/Admin/services/services';
-
-
-import AdminNavbar from './components/Admin/NavbarComponent';
 import HomeNavbar from './components/Home/HomeNavbar'
+import Services from './pages/Home/Services';
 
 
-// Services
-import Catering from './pages/Admin/services/Caterings';
-import Music from './pages/Admin/services/Music';
-import Decoration from './pages/Admin/services/Decoration';
 
+//USER
+
+//User login
+import Userlogin from './pages/User/Auth/UserLogin'
+import UserRegister from './pages/User/Auth/userRegister';
+
+//User Booking and registration
+import WeddingRegister from './pages/User/WeddingRegister';
+import ServiesBooking from './pages/User/ServiceBooking'
 
 // User
 import UserNavbar from './components/User/UserNavbar'
@@ -28,27 +30,28 @@ import UserDecoration from './pages/User/Services/UserDecoration'
 import UserMusic from './pages/User/Services/UserMusic';
 import UserVenue from './pages/User/venues';
 
-//User Booking and registration
-
-import WeddingRegister from './pages/User/WeddingRegister';
-import ServiesBooking from './pages/User/ServiceBooking'
-
-//User login
-import Userlogin from './pages/User/Auth/UserLogin'
-import UserRegister from './pages/User/Auth/userRegister';
 
 
-//ADMIN
-import AdminVenue from './pages/Admin/services/Venue'
-import Bookings from './pages/Admin/Booking'
+
 
 //Admin login Register
 import Adminlogin from './pages/Admin/Auth/adminlogin';
 import AdminRegister from './pages/Admin/Auth/adminRegister'
 import AdminProtectedRoute from './components/Admin/AdminProtectedRoute'
 
-// Home
-import Services from './pages/Home/Services';
+
+//ADMIN
+import AdminNavbar from './components/Admin/NavbarComponent';
+
+//Admin Services
+import AdminServices from './pages/Admin/services/services';
+
+import Catering from './pages/Admin/services/Caterings';
+import AdminVenue from './pages/Admin/services/Venue'
+import Music from './pages/Admin/services/Music';
+import Decoration from './pages/Admin/services/Decoration';
+
+import Bookings from './pages/Admin/Booking'
 import DetailedServices from './pages/Admin/DetailedServices';
 
 
@@ -97,11 +100,8 @@ function App() {
           <Route path="/adminlogin" element={<Adminlogin/>} />
 
 
-
 {/* Admin */}
-
           <Route element={<AdminProtectedRoute />}>
-
           <Route path="/admin" element={<div><AdminNavbar/> <Home/></div>} />
 
           <Route path="/adminregister" element={<AdminRegister/>} />
@@ -120,7 +120,6 @@ function App() {
           <Route path='/admin/bookings' element={<div><AdminNavbar/><Bookings/></div>} />
 
           <Route path='/admin/bookings/servicesdesc/:registrationId' element={<div><AdminNavbar/><DetailedServices/></div>} />
-
           </Route>
 
 

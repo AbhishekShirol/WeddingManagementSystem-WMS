@@ -1,6 +1,11 @@
+CREATE Database WMS;
+
+use WMS;
+
+
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
--- Host: localhost    Database: wedding_management
+-- Host: localhost    Database: wms
 -- ------------------------------------------------------
 -- Server version	8.0.39
 
@@ -14,6 +19,37 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admins` (
+  `admin_id` int NOT NULL AUTO_INCREMENT,
+  `adminname` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `adminname` (`adminname`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admins`
+--
+
+LOCK TABLES `admins` WRITE;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+INSERT INTO `admins` VALUES (9,'admin','admin','admin@gmail.com','$2b$10$tBA5/ni1tY1NORx06PyhRuv3gjJUQq/haQSd9dejVg43Fla4/dT7K',NULL,'9844230635'),(10,'admin1','admin1','admin1@gmail.com','$2b$10$Hg4A1AbUdy1CQFg57Op13OqGrTWP7Uqr9LYG/dwQrOF5Zp5aZly0K',NULL,'9988442302');
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `bookings_log`
@@ -30,7 +66,7 @@ CREATE TABLE `bookings_log` (
   PRIMARY KEY (`id`),
   KEY `reg_id` (`reg_id`),
   CONSTRAINT `bookings_log_ibfk_1` FOREIGN KEY (`reg_id`) REFERENCES `registrations` (`reg_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +75,7 @@ CREATE TABLE `bookings_log` (
 
 LOCK TABLES `bookings_log` WRITE;
 /*!40000 ALTER TABLE `bookings_log` DISABLE KEYS */;
-INSERT INTO `bookings_log` VALUES (2,3,'Music','2024-11-05 21:18:41'),(3,4,'Music','2024-11-05 21:24:55'),(5,8,'Music','2024-11-05 21:29:42'),(6,8,'Music','2024-11-05 21:29:48'),(7,8,'Music','2024-11-05 21:30:49'),(8,6,'Music','2024-11-05 21:31:34'),(10,3,'Decoration','2024-11-05 21:37:42'),(12,4,'Decoration','2024-11-05 21:39:05'),(14,6,'Decoration','2024-11-05 21:39:21'),(15,8,'Decoration','2024-11-05 21:39:29'),(16,4,'Catering','2024-11-05 21:45:00'),(19,6,'Catering','2024-11-06 09:53:51'),(23,3,'Venue','2024-11-06 10:44:02'),(24,4,'Venue','2024-11-06 10:44:12'),(31,8,'Venue','2024-11-06 10:56:24'),(32,8,'Venue','2024-11-06 10:56:33'),(48,3,'Venue','2024-11-06 11:19:23'),(49,3,'Venue','2024-11-06 11:19:34'),(50,3,'Venue','2024-11-06 11:19:49'),(51,3,'Venue','2024-11-06 11:19:52'),(52,3,'Venue','2024-11-06 11:19:59'),(53,3,'Venue','2024-11-06 11:20:04'),(63,4,'Venue','2024-11-06 11:34:34'),(64,4,'Venue','2024-11-06 11:34:43'),(65,4,'Venue','2024-11-06 11:34:49'),(66,4,'Venue','2024-11-06 11:35:23'),(67,3,'Venue','2024-11-06 11:35:33'),(68,3,'Venue','2024-11-06 11:35:37'),(69,3,'Venue','2024-11-06 11:35:40'),(75,3,'Venue','2024-11-06 14:05:32'),(76,3,'Music','2024-11-06 14:39:38'),(77,10,'Venue','2024-11-06 14:40:07'),(78,10,'Music','2024-11-06 14:40:19'),(79,10,'Decoration','2024-11-06 14:40:27');
+INSERT INTO `bookings_log` VALUES (82,14,'Venue','2024-11-13 14:24:00'),(83,14,'Catering','2024-11-13 14:24:08'),(84,14,'Decoration','2024-11-13 14:24:18'),(85,15,'Catering','2024-11-13 14:24:25'),(86,17,'Decoration','2024-11-13 14:29:41'),(87,17,'Music','2024-11-13 14:29:46');
 /*!40000 ALTER TABLE `bookings_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +92,7 @@ CREATE TABLE `caterings` (
   `price` float NOT NULL,
   `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +101,7 @@ CREATE TABLE `caterings` (
 
 LOCK TABLES `caterings` WRITE;
 /*!40000 ALTER TABLE `caterings` DISABLE KEYS */;
-INSERT INTO `caterings` VALUES (5,'1111121212121221212121',11,'00008848400'),(6,'klajkfldas',151,'afdDA');
+INSERT INTO `caterings` VALUES (7,'Classic Buffet',300,'A wide selection of classic dishes with vegetarian options'),(8,'Gourmet Platter',450,'Premium selection of gourmet food, ideal for fine dining events'),(9,'BBQ Feast',350,'A delicious BBQ spread with meats and sides, perfect for outdoor weddings'),(10,'Vegetarian Delight',280,'A range of healthy and tasty vegetarian dishes for a wholesome meal'),(11,'International Cuisine',400,'An array of dishes from different cuisines around the world');
 /*!40000 ALTER TABLE `caterings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +119,7 @@ CREATE TABLE `decorations` (
   `description` text,
   `imageUrl` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +128,7 @@ CREATE TABLE `decorations` (
 
 LOCK TABLES `decorations` WRITE;
 /*!40000 ALTER TABLE `decorations` DISABLE KEYS */;
-INSERT INTO `decorations` VALUES (4,'',11,'11','11');
+INSERT INTO `decorations` VALUES (5,'Floral Wedding Arch Canopy',300,'A beautifully crafted and elegantly decorated floral wedding arch canopy, adorned with an abundant display of pink and white blooms, complemented by delicate pink drapery and a set of luxurious gold chiavari chairs','https://gallery.theweddingcompany.com/cdn/shop/files/87c70a1b9a05be046e998325e696bba6_550x.jpg?v=1709882504'),(6,'Royal Red Backdrop',414,'An extravagant, gold-framed wedding arch adorned with an opulent floral display, accented by a rich red velvet backdrop, ornate candelabras, and a plush red carpet aisle, creating a lavishly romantic and regal ceremonial setting.','https://gallery.theweddingcompany.com/cdn/shop/files/6588b82cb232cca554dbd49da9b0c344_550x.jpg?v=1711971655'),(7,'Pastel Floral Backdrop',770,'A breathtaking floral wedding arch canopy framing a plush blush velvet tufted sofa, surrounded by an opulent display of hanging floral installations, ornate chandeliers, and lush potted floral arrangements, creating a lavishly romantic ceremony setting.','https://gallery.theweddingcompany.com/cdn/shop/files/7da01695091d77a7abf7ff140d2a2e13_550x.jpg?v=1709894990'),(8,'Ivory Elegance Arch',710,'Make a grand entrance for your wedding ceremony with this elegant hallway adorned with flowers and candles. The long hallway creates a beautiful walkway for the couple, leading them to the white flowering plant at the end. The candles scattered around provide a romantic touch to the scene. The chandelier hanging from the ceiling adds to the overall elegance.','https://gallery.theweddingcompany.com/cdn/shop/files/5_4a9ddcd4-8792-4699-8e23-4ece5ae2e97d_576x.jpg?v=1707394832'),(9,'Moroccan White Pathway',1125,'A stunning, intricately designed white archway adorned with floral details leads the way through a lush, tropical landscape, creating an enchanting, picturesque pathway for a wedding ceremony.','https://gallery.theweddingcompany.com/cdn/shop/files/9a41011035aa29f62675b09224edbcae_1_550x.jpg?v=1709546891');
 /*!40000 ALTER TABLE `decorations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +145,7 @@ CREATE TABLE `music` (
   `description` text,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +154,7 @@ CREATE TABLE `music` (
 
 LOCK TABLES `music` WRITE;
 /*!40000 ALTER TABLE `music` DISABLE KEYS */;
-INSERT INTO `music` VALUES (4,'11','11',1111),(5,'aa','11',11);
+INSERT INTO `music` VALUES (6,'Classical Ensemble','A sophisticated classical music performance, ideal for elegant weddings',500),(7,'Jazz Band','Live jazz performance to bring a lively and sophisticated atmosphere',600),(8,'DJ Service','Professional DJ with a wide range of music genres for the ultimate party experience',400),(9,'Acoustic Duo','A relaxed acoustic performance, perfect for intimate wedding ceremonies',350),(10,'Rock Band','Energetic rock band for a fun and lively celebration',700);
 /*!40000 ALTER TABLE `music` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +187,7 @@ CREATE TABLE `registrations` (
   CONSTRAINT `registrations_ibfk_3` FOREIGN KEY (`music_id`) REFERENCES `music` (`id`) ON DELETE CASCADE,
   CONSTRAINT `registrations_ibfk_4` FOREIGN KEY (`catering_id`) REFERENCES `caterings` (`id`) ON DELETE CASCADE,
   CONSTRAINT `registrations_ibfk_5` FOREIGN KEY (`decoration_id`) REFERENCES `decorations` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +196,7 @@ CREATE TABLE `registrations` (
 
 LOCK TABLES `registrations` WRITE;
 /*!40000 ALTER TABLE `registrations` DISABLE KEYS */;
-INSERT INTO `registrations` VALUES (3,38,'dfdfsa','faa','2024-11-07',11,25,5,NULL,NULL),(4,38,'afsdf','fadf','2024-11-07',11,NULL,4,5,4),(6,38,'kajfkd','fjda','2024-11-16',2,NULL,5,6,4),(8,38,'afdaf','afda','2024-11-23',222,NULL,5,NULL,4),(10,41,'user 11111','userr 1111','2024-11-15',11111111,27,5,NULL,4);
+INSERT INTO `registrations` VALUES (14,38,'Aarav Patel','Ananya Sharma','2024-11-30',1000,38,NULL,10,5),(15,38,'Manish Yadav','Sakshi Agarwal','2024-11-20',1500,NULL,NULL,9,NULL),(17,51,'Arjun Singh','Pooja Iyer','2024-11-15',1500,NULL,8,NULL,8);
 /*!40000 ALTER TABLE `registrations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -229,7 +265,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `mobile` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +274,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (38,'user','user','user@gmail.com','$2b$10$XKy7vKoxnV9DzB/24MxiceHSv0tAMA3oiQcomDJlGGAAmaJDhWLe2','1234567890'),(39,'','','','$2b$10$ekTfyMDW4RUV9yLd3IeBxOJmpRpyV0yhQJS.i7yktA4FCTYK0e67S',''),(41,'user1','user1','user1@gmail.com','$2b$10$U/DRBsXPdx9xW4SCgSL5yOOJ6OTBc4rZaoPL0Dd4zbrhSjtV3hSA.','1231231231');
+INSERT INTO `users` VALUES (38,'user','user','user@gmail.com','$2b$10$XKy7vKoxnV9DzB/24MxiceHSv0tAMA3oiQcomDJlGGAAmaJDhWLe2','1234567890'),(51,'user1','user1','user1@gmail.com','$2b$10$VmCwQDlsZbQpEbO5YvE7fe1tN59UYrRpH.fXlyKlLaBu8bf2XtfhS','1234565890');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +294,7 @@ CREATE TABLE `venues` (
   `imageUrl` varchar(255) NOT NULL,
   `availability` enum('Available','Unavailable') DEFAULT 'Available',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,16 +303,16 @@ CREATE TABLE `venues` (
 
 LOCK TABLES `venues` WRITE;
 /*!40000 ALTER TABLE `venues` DISABLE KEYS */;
-INSERT INTO `venues` VALUES (25,'Grand Ballroom, Hotel Luxe','Updated description for the venue, now offering new services.',600,3000.75,'http://example.com/images/grand_ballroom_updated.jpg','Unavailable'),(27,'The Royal Palace','',500,4500,'http://example.com/images/royal_palace.jpg','Unavailable');
+INSERT INTO `venues` VALUES (32,'4/1, Vaderahalli, Vidyaranyapura, Bengaluru, Karnataka, 560097, Bengaluru, Karnataka','The image shows a beautiful building with intricate lighting and architectural details, surrounded by a festive display of lights. The overall scene appears to be a festive and inviting venue.',2000,3555,'https://weddingimage.betterhalf.ai/weddings/225e8de1-5bc1-4ff8-87c8-abdd27e5d8a2/admin_uploads/5abba790-2c7c-4c3b-bf44-61f2975ef049None','Available'),(33,'Avalahalli Village, IVRI Road, 560064, Bengaluru, Karnataka','The image depicts a grand, decorated event space with a red velvet curtain backdrop, a chandelier, and various floral arrangements, creating an elegant and formal atmosphere.\n',850,6517,'https://gallery.theweddingcompany.com/cdn/shop/files/6588b82cb232cca554dbd49da9b0c344_550x.jpg?v=1711971655','Available'),(34,'Glass Factory Layout, Taluk, 560100, Bengaluru, Karnataka','The image shows a tranquil resort setting with rows of wooden chalets or cottages overlooking a central pond or waterway, surrounded by lush greenery, suggesting a peaceful and nature-inspired environment.',1500,3000,'https://weddingimage.betterhalf.ai/weddings/a5cc2e58-9931-4ef6-b2c7-6aa26e5fc0cb/admin_uploads/587e24b0-1bc2-4a78-bab5-12d27f138ec7.jpg','Available'),(35,'Doddadunnasandra, Karnataka 562114, Karnataka 562114, 562114, Bengaluru, Karnataka',' The image presents a luxurious tropical resort with a grand, ornately decorated building surrounded by palm trees and a well-manicured garden, conveying a sense of luxury and relaxation.',1500,3500,'https://weddingimage.betterhalf.ai/weddings/d872106b-89f7-4934-b7fe-1b8360ef0379/admin_uploads/5e3e1f90-0a88-4254-91b9-91f3c3fb277f.jpg','Available'),(36,'Ashvem Beach, Mandrem, 403527, Goa, Goa','The image depicts a modern, stylish resort complex with several multi-story buildings arranged around a central swimming pool, suggesting a contemporary and amenity-rich vacation destination.',2000,4000,'https://weddingimage.betterhalf.ai/weddings/94e7b1e4-362e-47fc-9f8d-0e654f62b810/admin_uploads/6af9d66d-b565-4168-8a1d-98c68fa61a95.jpg','Available'),(37,'SYNO.211-2A GROUND FLOOR, Ashvem Beach, Road, Mandrem, 403527, Goa, Goa','A cozy and inviting resort with wooden chalets overlooking a central pond and surrounded by lush greenery.',1000,2000,'https://weddingimage.betterhalf.ai/weddings/52c428d5-8716-4ec1-ad73-2144dc73b820/admin_uploads/6b3acb80-69cc-41a0-9ee6-aa9b851e9cfe.jpg','Available'),(38,'Ashok Nagar Society, Nahur Road, Vaithara Nagar, 400080, Mumbai, Maharashtra','A grand, ornately decorated event venue with a red velvet backdrop, chandeliers, and elegant floral arrangements.',1500,2000,'https://weddingimage.betterhalf.ai/weddings/d9ff5b9b-d451-4781-8554-9a98d697f4ff/gmap/d90d925c-8234-4218-884e-9d71826185d2.jpg','Unavailable'),(39,'CTS No. 145 A, NS C-04,, Skycity, Chhatrapati Shivaji Maharaj Int\'l Airport Rd, 400099, Mumbai, Maharashtra',' luxurious tropical resort with a grand, ornate building surrounded by palm trees and a well-manicured garden.',1000,4000,'https://weddingimage.betterhalf.ai/weddings/eb85efc4-1410-4c5b-90e4-e2016271f81f/admin_uploads/ad3dc0d6-bc08-4523-8e6d-3a47154dc8e6.jpg','Available'),(40,'Main G.T. Karnal Road, Oppt. Gurudwara Siraspur Village, Grand Trunk Road, 110036, Delhi, Delhi','A modern, sophisticated resort complex with multi-story buildings arranged around a central swimming pool.',1500,3000,'https://weddingimage.betterhalf.ai/weddings/8e8de01c-53a0-4663-890f-8a7eb533dfb5/admin_uploads/2a6f586a-e6ca-4335-b1cd-2de9ecd71ea6.jpg','Available'),(41,'National Highway 48, Rajokri Rd, D Block, 6:Samalkha, New Delhi, Delhi 110037, Rajokri Road, D Block, 110037, Delhi, Delhi','A beautifully illuminated and elaborately decorated event venue with a vibrant and festive atmosphere.',1700,5000,'https://weddingimage.betterhalf.ai/weddings/53800df6-bebf-4de9-a89a-8fa8ad71bbbe/admin_uploads/dcce84b0-c827-4ec2-827f-92a0675cfeef.jpg','Available');
 /*!40000 ALTER TABLE `venues` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'wedding_management'
+-- Dumping events for database 'wms'
 --
 
 --
--- Dumping routines for database 'wedding_management'
+-- Dumping routines for database 'wms'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `book_service` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -392,4 +428,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-06 20:26:59
+-- Dump completed on 2024-11-13 20:02:35

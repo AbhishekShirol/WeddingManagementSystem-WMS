@@ -1,11 +1,11 @@
-import React from 'react'
+
 
 function Home() {
   return (
     <div
       className="vh-100 d-flex align-items-center justify-content-center text-center"
       style={{
-        // backgroundImage: 'url(/images/img7.jpeg)', // Path to your image
+        // backgroundImage: 'url(/images/overlay-bg.jpg)', // Path to your image
         backgroundColor: '#ADD8E6', // Light Blue Color (Hex code)
         backgroundSize: 'cover',
         backgroundPosition: 'center center',

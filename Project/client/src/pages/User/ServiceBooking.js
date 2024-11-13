@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import { Calendar, Heart, People, MusicNote, Truck, Camera, PinMap, X } from 'react-bootstrap-icons';
@@ -10,23 +10,23 @@ const ServiceBooking = () => {
   const [registrations, setRegistrations] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchRegistrations();
-  }, []);
-
-
   const { currentUser } = useContext(AuthContext);
   const user_id = currentUser?.id;
 
-  const fetchRegistrations = async () => {
+  // Memoized fetchRegistrations function using useCallback
+  const fetchRegistrations = useCallback(async () => {
     try {
-      // console.log('user_id:', user_id);
       const response = await axios.get('http://localhost:5000/api/wedding/register', { params: { user_id } });
       setRegistrations(response.data);
     } catch (error) {
       console.error('Error fetching registrations:', error);
     }
-  };
+  }, [user_id]);  // Only recreate if user_id changes
+
+  // useEffect with the correct dependency array
+  useEffect(() => {
+    fetchRegistrations();  // Now it's safe to call fetchRegistrations
+  }, [fetchRegistrations]);  // Add fetchRegistrations to the dependency array
 
   const handleNavigate = (path, registrationId) => {
     navigate(`${path}/${registrationId}`);
@@ -56,11 +56,8 @@ const ServiceBooking = () => {
     }
   };
 
-
   const handleWeddingCancellation = async (registrationId, venueId) => {
     try {
-      // console.log('registrationId:', registrationId);
-      // console.log('venueId:', venueId);
       const response = await axios.post('http://localhost:5000/api/cancel-registration', {
         registrationId,
         venueId,  // Send the venueId to make it available
@@ -83,9 +80,7 @@ const ServiceBooking = () => {
       className="d-flex justify-content-center mt-5"
       style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
     >
-      {/* Inner container without flex to keep layout intact */}
-      <div className="container"style={{ maxHeight: '100%', overflowY: 'auto' }}>
-
+      <div className="container" style={{ maxHeight: '100%', overflowY: 'auto' }}>
         <h1 className="my-4 d-flex justify-content-center">Wedding Registrations</h1>
 
         <div className="row">
@@ -181,7 +176,6 @@ const ServiceBooking = () => {
           <strong> New Registration </strong>
         </Button>
       </div>
-
     </div>
   );
 };

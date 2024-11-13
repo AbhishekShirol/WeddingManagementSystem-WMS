@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../../context/Admin/authContext';
 
 function AdminLogin() { // <-- Changed to PascalCase (AdminLogin)
 
     const navigate = useNavigate();
     const { login, currentAdmin } = useContext(AuthContext);
-    const location = useLocation();
+  
 
     // Check if the admin is already logged in
     useEffect(() => {

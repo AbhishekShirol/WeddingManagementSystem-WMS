@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate ,useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../../context/User/authContext';
 
@@ -10,7 +10,6 @@ function UserLogin() {
     axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const {login,currentUser} = useContext(AuthContext);
-    const location = useLocation();
 
     // Check if the user is already logged in
     useEffect(() => {

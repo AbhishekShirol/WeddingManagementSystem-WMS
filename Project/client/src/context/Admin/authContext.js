@@ -1,7 +1,5 @@
 import { createContext,useState, useEffect } from "react";
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
-// const navigate = useNavigate();
 
 export const AuthContext = createContext();
 
