@@ -42,6 +42,10 @@ import UserRegister from './pages/User/Auth/userRegister';
 import AdminVenue from './pages/Admin/services/Venue'
 import Bookings from './pages/Admin/Booking'
 
+//Admin login Register
+import Adminlogin from './pages/Admin/Auth/adminlogin';
+import AdminRegister from './pages/Admin/Auth/adminRegister'
+import AdminProtectedRoute from './components/Admin/AdminProtectedRoute'
 
 // Home
 import Services from './pages/Home/Services';
@@ -56,18 +60,15 @@ function App() {
         <Routes>
 
 {/* Home */}
-          <Route path="/" element=<div><HomeNavbar/> <Home/></div> />
-          <Route path="/services" element=<div><HomeNavbar/> <Services/></div> />
-
-
-{/* Admin */}
-          <Route path="/admin" element=<div><AdminNavbar/> <Home/></div> />
+          <Route path="/" element={<div><HomeNavbar/> <Home/></div>} />
+          <Route path="/services" element={<div><HomeNavbar/> <Services/></div>} />
 
 
 
 {/* Userlogin */}
           <Route path="/userlogin" element={<Userlogin/>} />
           <Route path="/userregister" element={<UserRegister />} />
+
 
 
 {/* User */}
@@ -91,20 +92,37 @@ function App() {
 
 
 
-{/* Admin login */}
 
-          {/* <Route path="/adminlogin" element={<Adminlogin/>} /> */}
-          {/* <Route path="/adminregister" element={<Adminlogin />} /> */}
+{/* Adminlogin */}  
+          <Route path="/adminlogin" element={<Adminlogin/>} />
 
-{/* Adminservices */}
+
+
+{/* Admin */}
+
+          <Route element={<AdminProtectedRoute />}>
+
+          <Route path="/admin" element={<div><AdminNavbar/> <Home/></div>} />
+
+          <Route path="/adminregister" element={<AdminRegister/>} />
           
-          <Route path="/admin/services" element=<div><AdminNavbar/> <AdminServices/> </div> />
-          <Route path="/admin/catering" element=<div><AdminNavbar/> <Catering/> </div> />
-          <Route path="/admin/music" element=<div><AdminNavbar/> <Music/> </div> />
-          <Route path="/admin/decoration" element=<div><AdminNavbar/> <Decoration/> </div> />
-          <Route path="/admin/venue" element=<div><AdminNavbar/> <AdminVenue/> </div> />
-          <Route path='/admin/bookings' element=<div><AdminNavbar/><Bookings/></div> />
-          <Route path='/admin/bookings/servicesdesc/:registrationId' element=<div><AdminNavbar/><DetailedServices/></div> />
+{/* Adminservices */}
+          <Route path="/admin/services" element={<div><AdminNavbar/> <AdminServices/> </div>} />
+
+          <Route path="/admin/catering" element={<div><AdminNavbar/> <Catering/> </div>} />
+
+          <Route path="/admin/music" element={<div><AdminNavbar/> <Music/> </div>} />
+
+          <Route path="/admin/decoration" element={<div><AdminNavbar/> <Decoration/> </div>} />
+
+          <Route path="/admin/venue" element={<div><AdminNavbar/> <AdminVenue/> </div>} />
+
+          <Route path='/admin/bookings' element={<div><AdminNavbar/><Bookings/></div>} />
+
+          <Route path='/admin/bookings/servicesdesc/:registrationId' element={<div><AdminNavbar/><DetailedServices/></div>} />
+
+          </Route>
+
 
         </Routes>
       </Router>

@@ -5,26 +5,25 @@ import { Navigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
-export const AuthContextProvider = ({children}) => {
-    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
+export const AdminAuthContextProvider = ({children}) => {
+    const [currentAdmin, setCurrentAdmin] = useState(JSON.parse(localStorage.getItem('admin')) || null);
 
     const login = async (inputs) => {
-        const res = await axios.post('http://localhost:5000/api/user/userlogin', inputs);
-        setCurrentUser(res.data);
+        const res = await axios.post('http://localhost:5000/api/adminlogin', inputs);
+        setCurrentAdmin(res.data);
     };
-
 
     const logout = async () => {
         
-        await axios.post('http://localhost:5000/api/user/userlogout',{});
-        setCurrentUser(null);
+        await axios.post('http://localhost:5000/api/adminlogout',{});
+        setCurrentAdmin(null);
     };
 
 
     useEffect( () => {
-        localStorage.setItem('user',JSON.stringify(currentUser));
+        localStorage.setItem('admin',JSON.stringify(currentAdmin));
         setLoading(false);
-    },[currentUser])
+    },[currentAdmin])
     
     
     const [loading, setLoading] = useState(true);
@@ -34,7 +33,7 @@ export const AuthContextProvider = ({children}) => {
     }
 
     return(
-        <AuthContext.Provider value={{currentUser,login,logout}}>
+        <AuthContext.Provider value={{currentAdmin,login,logout}}>
             {children}
         </AuthContext.Provider>
     )

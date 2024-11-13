@@ -1,13 +1,36 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/Admin/authContext';
 
 function NavbarComponent() {
+
+  const {currentAdmin,logout} = useContext(AuthContext);
+
+  // axios.defaults.withCredentials = true;
+
+  const navigate = useNavigate();
+
+  const onLogout = async () => {
+    try {
+      // const response = await axios.post('http://localhost:5000/api/user/logout', {});
+      await logout();
+
+        navigate('/'); // Redirect to home if logout succeeds
+        window.location.reload();
+    }catch (error) {
+        console.error(error);
+    } 
+  };
+
+
+
   return (
     <Navbar expand="lg" className="bg-light shadow-sm fixed-top py-2">
       <Container>
@@ -26,10 +49,17 @@ function NavbarComponent() {
           <Nav className="ms-auto">
 
             <Nav.Link as={Link} to="/admin/"><strong>Home</strong></Nav.Link>
+            <Nav.Link as={Link} to="/adminregister"><strong>Register Admin</strong></Nav.Link>
             <Nav.Link as={Link} to="/admin/services"><strong>Services</strong></Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings"><strong>Bookings</strong></Nav.Link>
-            <Nav.Link as={Link} to="/" className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center'><strong>Admin Logout</strong></Nav.Link>
-            
+            {/* <Nav.Link as={Link} to="/" className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center'><strong>Admin Logout</strong></Nav.Link> */}
+            {/* <Nav.Link as={Link} to="/user/servicesbooking"><strong>Bookings</strong></Nav.Link> */}
+            {currentAdmin ?
+            (<Nav.Link onClick={onLogout} className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center' ><strong>Admin Logout</strong></Nav.Link>)
+            :
+            (<Nav.Link as={Link} to="/adminlogin" className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center'><strong>Admin Login</strong></Nav.Link>)}
+
+            <Nav.Link ><strong>{currentAdmin?.adminname}</strong></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

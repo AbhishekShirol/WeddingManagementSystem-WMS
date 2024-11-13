@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { AuthContextProvider } from './context/User/authContext';
+import {AdminAuthContextProvider} from './context/Admin/authContext'
 import axios from 'axios';
 
 
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <AdminAuthContextProvider>
+        <App />
+      </AdminAuthContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

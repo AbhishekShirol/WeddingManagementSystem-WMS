@@ -31,7 +31,7 @@ function HomeNavbar() {
 
             <Nav.Link as={Link} to="/"><strong>Home</strong></Nav.Link>
             <Nav.Link as={Link} to="/services"><strong>Services</strong></Nav.Link>
-            <Nav.Link as={Link} to="/admin" ><strong>Admin Login</strong></Nav.Link>
+            <Nav.Link as={Link} to="/adminlogin" ><strong>Admin Login</strong></Nav.Link>
             <Nav.Link as={Link} to="/userlogin" className='px-3 py-1 rounded bg-primary text-white mx-1px-3 py-1 rounded bg-primary text-white mx-1 d-flex align-items-center justify-content-center'><strong>User Login</strong></Nav.Link>
             
           </Nav>

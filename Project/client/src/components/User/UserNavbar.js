@@ -16,7 +16,7 @@ function UserNavbar() {
 
   const {currentUser,logout} = useContext(AuthContext);
 
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
 
