@@ -443,7 +443,7 @@ const VenueService = () => {
                     <td>{venue.location}</td>
                     <td>{venue.description}</td>
                     <td>{venue.capacity}</td>
-                    <td>${venue.price}</td>
+                    <td>₹{venue.price}</td>
                     <td>
                       <img
                         src={venue.imageUrl}

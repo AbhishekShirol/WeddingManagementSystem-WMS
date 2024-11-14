@@ -146,7 +146,7 @@ const UserCatering = () => {
               className={catering.id === cateringId ? 'table-primary' : ''} // Highlight selected row
             >
               <td>{catering.name}</td>
-              <td>${catering.price}</td>
+              <td>₹{catering.price}</td>
               <td>{catering.description}</td>
               <td>
                 <button

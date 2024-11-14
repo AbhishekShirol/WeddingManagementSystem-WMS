@@ -119,7 +119,7 @@ const MusicService = () => {
               ) : (
                 <>
                   <td>{music.name}</td>
-                  <td>${music.price}</td>
+                  <td>₹{music.price}</td>
                   <td>{music.description}</td>
                   <td>
                     <button
@@ -182,3 +182,4 @@ const MusicService = () => {
 };
 
 export default MusicService;
+

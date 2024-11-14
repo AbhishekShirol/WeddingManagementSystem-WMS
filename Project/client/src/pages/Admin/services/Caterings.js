@@ -119,7 +119,7 @@ const CateringService = () => {
               ) : (
                 <>
                   <td>{catering.name}</td>
-                  <td>${catering.price}</td>
+                  <td>₹{catering.price}</td>
                   <td>{catering.description}</td>
                   <td>
                     <button

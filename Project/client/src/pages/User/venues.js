@@ -76,7 +76,7 @@ const UserVenue = () => {
               </td>
               <td>{venue.location}</td>
               <td>{venue.capacity}</td>
-              <td>${venue.price}</td>
+              <td>₹{venue.price}</td>
               <td>
                 <button
                   className="btn btn-primary btn-sm"
@@ -105,4 +105,6 @@ const UserVenue = () => {
 };
 
 export default UserVenue;
+
+
 

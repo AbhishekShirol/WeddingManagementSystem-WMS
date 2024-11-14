@@ -62,7 +62,7 @@ const RegistrationList = () => {
               <td>{reg.bride_name}</td>
               <td>{new Date(reg.wedding_date).toLocaleDateString()}</td>
               <td>{reg.number_of_guests}</td>
-              <td>${reg.total_price.toFixed(2)}</td>
+              <td>₹{reg.total_price.toFixed(2)}</td>
               <td>
                 <button
                   className="btn btn-primary btn-sm me-2"

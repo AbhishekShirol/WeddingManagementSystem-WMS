@@ -147,7 +147,7 @@ const UserDecoration = () => {
               className={decoration.id === decorationId ? 'table-primary' : ''} // Highlight selected row
             >
               <td>{decoration.name}</td>
-              <td>${decoration.price}</td>
+              <td>₹{decoration.price}</td>
               <td>{decoration.description}</td>
               <td>
                 <img 

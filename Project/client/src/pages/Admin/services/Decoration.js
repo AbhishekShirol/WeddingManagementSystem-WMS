@@ -129,7 +129,7 @@ const DecorationService = () => {
               ) : (
                 <>
                   <td>{decoration.name}</td>
-                  <td>${decoration.price}</td>
+                  <td>₹{decoration.price}</td>
                   <td>{decoration.description}</td>
                   <td>
                     <img src={decoration.imageUrl} alt={decoration.name} style={{ width: '100px', height: 'auto' }} />

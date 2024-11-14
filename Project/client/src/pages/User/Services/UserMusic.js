@@ -163,7 +163,7 @@ const UserMusic = () => {
               className={music.id === musicId ? 'table-primary' : ''} // Highlight selected row
             >
               <td>{music.name}</td>
-              <td>${music.price}</td>
+              <td>₹{music.price}</td>
               <td>{music.description}</td>
               <td>
                 <button

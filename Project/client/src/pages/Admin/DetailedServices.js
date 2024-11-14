@@ -70,7 +70,7 @@ const DetailedServices = () => {
                   <img src={handleNull(serviceDetails.venue_image)} alt="Venue" className="card-img-top mb-3" />
                   <p className="card-text"><strong>Location:</strong> {handleNull(serviceDetails.venue_location)}</p>
                   <p className="card-text"><strong>Description:</strong> {handleNull(serviceDetails.venue_description)}</p>
-                  <p className="card-text"><strong>Price:</strong> ${handleNull(serviceDetails.venue_price)}</p>
+                  <p className="card-text"><strong>Price:</strong> ₹{handleNull(serviceDetails.venue_price)}</p>
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@ const DetailedServices = () => {
                 <div className="card-body">
                   <p className="card-text"><strong>Name:</strong> {handleNull(serviceDetails.catering_name)}</p>
                   <p className="card-text"><strong>Description:</strong> {handleNull(serviceDetails.catering_description)}</p>
-                  <p className="card-text"><strong>Price:</strong> ${handleNull(serviceDetails.catering_price)}</p>
+                  <p className="card-text"><strong>Price:</strong> ₹{handleNull(serviceDetails.catering_price)}</p>
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@ const DetailedServices = () => {
                 <div className="card-body">
                   <p className="card-text"><strong>Name:</strong> {handleNull(serviceDetails.music_name)}</p>
                   <p className="card-text"><strong>Description:</strong> {handleNull(serviceDetails.music_description)}</p>
-                  <p className="card-text"><strong>Price:</strong> ${handleNull(serviceDetails.music_price)}</p>
+                  <p className="card-text"><strong>Price:</strong> ₹{handleNull(serviceDetails.music_price)}</p>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ const DetailedServices = () => {
                   <img src={handleNull(serviceDetails.decoration_image)} alt="Decoration" className="card-img-top mb-3" />
                   <p className="card-text"><strong>Name:</strong> {handleNull(serviceDetails.decoration_name)}</p>
                   <p className="card-text"><strong>Description:</strong> {handleNull(serviceDetails.decoration_description)}</p>
-                  <p className="card-text"><strong>Price:</strong> ${handleNull(serviceDetails.decoration_price)}</p>
+                  <p className="card-text"><strong>Price:</strong> ₹{handleNull(serviceDetails.decoration_price)}</p>
                 </div>
               </div>
             </div>
