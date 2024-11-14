@@ -35,8 +35,8 @@ import UserVenue from './pages/User/venues';
 
 
 //Admin login Register
-import Adminlogin from './pages/Admin/Auth/adminlogin';
-import AdminRegister from './pages/Admin/Auth/adminRegister'
+import Adminlogin from './pages/Admin/Auth/Adminlogin';
+import AdminRegister from './pages/Admin/Auth/AdminRegister'
 import AdminProtectedRoute from './components/Admin/AdminProtectedRoute'
 
 
