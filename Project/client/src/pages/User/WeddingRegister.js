@@ -195,6 +195,8 @@ function WeddingRegister() {
             <input
               type='number'
               required
+              min="1"
+              max="2000"
               placeholder='Enter Number of Guests'
               name='number_of_guests'
               onChange={handleInput}
