@@ -102,4 +102,24 @@ router.post('/book', (req, res) => {
   });
 });
 
+
+
+router.get('/count', async (req, res) => {
+  try {
+      const query = 'SELECT COUNT(*) AS total FROM venues where availability = "Available"';
+      
+      db.query(query, (err, results) => {
+          if (err) {
+              console.log(err);
+              return res.status(500).json({ error: err.message });
+          }
+          return res.status(200).json({ total: results[0].total });
+      });
+  } catch (error) {
+      console.error('Error fetching total availability count:', error);
+      res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
 module.exports = router;

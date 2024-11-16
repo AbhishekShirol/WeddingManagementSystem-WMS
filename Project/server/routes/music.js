@@ -124,4 +124,22 @@ router.post('/cancel', (req, res) => {
     });
 });
 
+
+router.get('/count', async (req, res) => {
+    try {
+        const query = 'SELECT COUNT(*) AS total FROM music';
+        
+        db.query(query, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({ error: err.message });
+            }
+            return res.status(200).json({ total: results[0].total });
+        });
+    } catch (error) {
+        console.error('Error fetching total music count:', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 module.exports = router;

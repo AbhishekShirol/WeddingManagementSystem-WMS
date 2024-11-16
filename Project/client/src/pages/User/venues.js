@@ -53,7 +53,7 @@ const UserVenue = () => {
   return (
     <div 
       className="d-flex justify-content-center mt-5 min-vh-100 " 
-      style={{ backgroundColor: '#ADD8E6', overflowY: 'auto' }}
+      style={{ backgroundColor: '#87CEEB80', overflowY: 'auto' }}
     >
     <div className="container">
       <h1 className="my-4 d-flex justify-content-center">Venue Services</h1>

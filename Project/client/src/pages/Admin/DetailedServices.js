@@ -52,7 +52,7 @@ const DetailedServices = () => {
   return (
     <div
       className="d-flex justify-content-center mt-5"
-      style={{ backgroundColor: '#ADD8E6',height: '94vh', overflowY: 'auto' }}
+      style={{ backgroundColor: '#87CEEB80',height: '93vh', overflowY: 'auto' }}
     >
     <div className="container py-5 pt-5">
       <div className="row justify-content-center">
@@ -121,3 +121,4 @@ const DetailedServices = () => {
 };
 
 export default DetailedServices;
+
