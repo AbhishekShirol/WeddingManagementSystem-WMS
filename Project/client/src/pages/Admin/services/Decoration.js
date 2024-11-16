@@ -288,7 +288,7 @@ const DecorationService = () => {
   return (
     <div
       className="d-flex justify-content-center mt-5"
-      style={{ backgroundColor: '#87CEEB80', height: '100vh', overflowY: 'auto' }}
+      style={{ backgroundColor: '#E5E5E5CC', height: '100vh', overflowY: 'auto' }}
     >
       <div className="container">
         <h1 className="text-center my-4">Decoration Services</h1>

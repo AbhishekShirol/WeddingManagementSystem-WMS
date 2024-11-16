@@ -126,7 +126,7 @@ const RegistrationList = () => {
   return (
     <div
       className="d-flex justify-content-center mt-5"
-      style={{ height: '93vh', overflowY: 'auto', position: 'relative' }}
+      style={{ height: '94vh', overflowY: 'auto', position: 'relative' }}
     >
       {/* Background image with opacity */}
       <div
