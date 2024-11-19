@@ -115,7 +115,7 @@ function App() {
 
           <Route path="/admin/decoration" element={<div><AdminNavbar/> <Decoration/> </div>} />
 
-          <Route path="/admin/venue" element={<div><AdminNavbar/> <AdminVenue/> </div>} />
+          <Route path="/admin/venues" element={<div><AdminNavbar/> <AdminVenue/> </div>} />
 
           <Route path='/admin/bookings' element={<div><AdminNavbar/><Bookings/></div>} />
 
