@@ -7,7 +7,7 @@ function Home() {
       <div 
         className="position-absolute w-100 h-100 opacity-50"
         style={{
-          backgroundImage: 'url(/images/home.jpg)',
+          backgroundImage: 'url(/images/_DSC3491.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -21,7 +21,7 @@ function Home() {
               Welcome
             </h1>
             <p className="lead fs-3 text-white mb-5 fw-light px-2">
-              Experience the best of decoration services with our stunning designs!
+              Turning 'I Do' Into a Dream Come True!
             </p>
           </div>
         </div>

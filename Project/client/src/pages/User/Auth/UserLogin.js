@@ -45,7 +45,7 @@ function UserLogin() {
             <div 
                 className="position-absolute w-100 h-100" 
                 style={{
-                    backgroundImage: 'url(/images/home.jpg)',  // Background image URL
+                    backgroundImage: 'url(/images/_DSC6552.jpg)',  // Background image URL
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     opacity: 0.5  // Apply opacity only to the background image

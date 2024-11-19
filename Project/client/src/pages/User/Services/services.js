@@ -10,7 +10,7 @@ function UserServices() {
       <div
         className="position-absolute w-100 h-100 opacity-50"
         style={{
-          backgroundImage: 'url(/images/home.jpg)', // Add the background image URL
+          backgroundImage: 'url(/images/ADWT4148.jpg)', // Add the background image URL
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -60,7 +60,7 @@ function UserServices() {
           <div className="mx-3">
             <Link to="/user/servicesbooking" className="text-decoration-none text-dark">
               <div className="card" style={{ width: '250px', height: '350px', position: 'relative', overflow: 'hidden' }}>
-                <img src="/images/decoration.jpg" className="card-img-top" alt="Decoration" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
+                <img src="/images/ADWT4148.jpg" className="card-img-top" alt="Decoration" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
                 <div className="card-body text-center" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(255, 255, 255, 0.7)', padding: '10px' }}>
                   <h5 className="card-title" style={{ fontWeight: 600 }}>Decoration</h5>
                 </div>
@@ -72,7 +72,7 @@ function UserServices() {
           <div className="mx-3">
             <Link to="/user/servicesbooking" className="text-decoration-none text-dark">
               <div className="card" style={{ width: '250px', height: '350px', position: 'relative', overflow: 'hidden' }}>
-                <img src="/images/venue.jpg" className="card-img-top" alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
+                <img src="/images/_DSC3491.jpg" className="card-img-top" alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
                 <div className="card-body text-center" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(255, 255, 255, 0.7)', padding: '10px' }}>
                   <h5 className="card-title" style={{ fontWeight: 600 }}>Venue</h5>
                 </div>
