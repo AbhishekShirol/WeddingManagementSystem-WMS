@@ -16,8 +16,8 @@
 - **Front-end:** React
 - **Back-end:** Node.js, Express
 - **Database:** MySQL
-- **Authentication:** 
-- **Styling:** 
+- **Authentication:** JWT Token
+- **Styling:** Bootstrap
 
 ## Installation
 
